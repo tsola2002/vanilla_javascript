@@ -3,14 +3,40 @@
 <head>
     <title></title>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
-    <script type="text/javascript">
 
-    </script>
 </head>
 <body>
 <div class="container">
+    <div class="row">
+        <div class="col col-lg-6">
+            <button onclick="alert('Hello World');" class="btn btn-info">click me</button>
+        </div>
+        <div id="mainImage"  class="col col-lg-6">
+            <img src="http://placehold.it/350x150">
+        </div>
+    </div>
 
 </div>
+<script type="text/javascript">
+    //using genric onclick event
+    document.onclick = function() {
+        alert("You clicked somewhere in the document");
+    };
 
+
+    function prepareEventHandlers() {
+    var myImage = document.getElementById("mainImage");
+    myImage.onclick =  function() {
+        alert("You clicked the image");
+    }
+     }
+
+      window.onload = function() {
+     // prep anything we need to
+     prepareEventHandlers();
+     };
+
+
+</script>
 </body>
 </html>
