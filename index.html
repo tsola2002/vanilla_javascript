@@ -9,7 +9,27 @@
 <div class="container">
     <div class="row">
         <div class="col col-lg-6">
-            <button onclick="alert('Hello World');" class="btn btn-info">click me</button>
+            <form role="form">
+                <div class="form-group">
+                    <label for="email">Email address</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter email">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputFile">File input</label>
+                    <input type="file" id="exampleInputFile">
+                    <p class="help-block">Example block-level help text here.</p>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox"> Check me out
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
         </div>
         <div id="mainImage"  class="col col-lg-6">
             <img src="http://placehold.it/350x150">
@@ -18,23 +38,21 @@
 
 </div>
 <script type="text/javascript">
-    //using genric onclick event
-    document.onclick = function() {
-        alert("You clicked somewhere in the document");
+    var emailField = document.getElementById("email");
+
+    //trigerring on onfocus to blank out text
+    emailField.onfocus = function() {
+        if ( emailField.value == "your email") {
+            emailField.value = "";
+        }
     };
 
-
-    function prepareEventHandlers() {
-    var myImage = document.getElementById("mainImage");
-    myImage.onclick =  function() {
-        alert("You clicked the image");
-    }
-     }
-
-      window.onload = function() {
-     // prep anything we need to
-     prepareEventHandlers();
-     };
+    //triggering on blur to move out of field
+    emailField.onblur = function() {
+        if ( emailField.value == "") {
+            emailField.value = "your email";
+        }
+    };
 
 
 </script>
