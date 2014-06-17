@@ -31,28 +31,49 @@
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
         </div>
-        <div id="mainImage"  class="col col-lg-6">
-            <img src="http://placehold.it/350x150">
+        <div  class="col col-lg-6">
+            <img id="mainImage" src="http://placehold.it/350x150">
         </div>
     </div>
 
 </div>
 <script type="text/javascript">
-    var emailField = document.getElementById("email");
+    // Two methods for timers - setTimeout and SetInterval (single / repeating)
 
-    //trigerring on onfocus to blank out text
-    emailField.onfocus = function() {
-        if ( emailField.value == "your email") {
-            emailField.value = "";
+    function simpleMessage() {
+        alert("This is just an alert box");
+    }
+
+    // settimeout is in milliseconds
+    //setTimeout(simpleMessage,5000);
+
+    var myImage = document.getElementById("mainImage");
+
+    var imageArray = ["_images/overlook.jpg","_images/winery_sign.jpg","_images/lunch.jpg",
+        "_images/bigSur.jpg","_images/flag_photo.jpg","_images/mission_look.jpg"];
+    var imageIndex = 0;
+
+    function changeImage() {
+        myImage.setAttribute("src",imageArray[imageIndex]);
+        imageIndex++;
+        if (imageIndex >= imageArray.length) {
+            imageIndex = 0;
         }
+    }
+
+    // setInterval is also in milliseconds
+    var intervalHandle = setInterval(changeImage,5000);
+
+    myImage.onclick =  function() {
+        clearInterval(intervalHandle);
     };
 
-    //triggering on blur to move out of field
-    emailField.onblur = function() {
-        if ( emailField.value == "") {
-            emailField.value = "your email";
-        }
-    };
+
+
+
+
+
+
 
 
 </script>
